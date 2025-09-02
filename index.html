@@ -182,7 +182,7 @@
       // 3. Send booking to Google Sheets (replace with your script URL)
       const bookingData = { date, persons, place, orders, menu };
 
-      fetch("https://script.google.com/macros/s/AKfycbxcXOg--u003boqu_b9PJJkPPDjewrs41T4ZsQsILy9O27UkbTyZcuOjTfOIKLbMHdyEw/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbyk2JUS5h6-DU90dvVdq38hcCTFdSXbChR3QMr_W2gQOv7JHNk_6CVtY3kmXlO3dOTGCA/exec", {
         method: "POST",
         body: JSON.stringify(bookingData),
         headers: { "Content-Type": "application/json" }
