@@ -20,7 +20,7 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: "v4", auth });
 
 // 📌 Replace with your Google Sheet ID
-const SPREADSHEET_ID = "YOUR_SHEET_ID";
+const SPREADSHEET_ID = "1Nl_545XbX0WdDQwK4JAvw-QVWtoGoxN7gpT5tY2P8ho";
 
 // ✅ API to receive booking and insert into Google Sheet
 app.post("/booking", async (req, res) => {
