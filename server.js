@@ -27,10 +27,12 @@ app.post("/booking", async (req, res) => {
   try {
     const { date, persons, place, orders, menu } = req.body;
 
+    // 👇 use this version instead of A1:D2
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: "Sheet1!A:E", // first 5 columns
+      range: "Sheet1!A:E", // expands dynamically
       valueInputOption: "USER_ENTERED",
+      insertDataOption: "INSERT_ROWS", // ensures new row gets added
       requestBody: {
         values: [[date, persons, place, orders, menu]],
       },
