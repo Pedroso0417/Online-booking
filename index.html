@@ -1,202 +1,208 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Food Online Booking Dashboard</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #f4f7fa;
-        color: #333;
-      }
-      header {
-        background: #4CAF50;
-        color: white;
-        padding: 1rem;
-        text-align: center;
-      }
-      .container {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 20px;
-        padding: 20px;
-      }
-      .card {
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      }
-      h2 {
-        margin-top: 0;
-        color: #4CAF50;
-      }
-      label {
-        display: block;
-        margin: 10px 0 5px;
-      }
-      input, select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      button {
-        background: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #45a049;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-      }
-      th, td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        text-align: center;
-      }
-      th {
-        background: #4CAF50;
-        color: white;
-      }
-      /* Map styling */
-      .map {
-        margin-top: 20px;
-        border-radius: 10px;
-        overflow: hidden;
-        height: 300px;
-      }
-    </style>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Online Booking Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background: #4CAF50;
+      color: white;
+    }
+    .map {
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
 
-  <header>
-    <h1>🍽 Food Online Booking Dashboard</h1>
-  </header>
+<header>
+  <h1>🍽 Food Online Booking Dashboard</h1>
+</header>
 
-  <div class="container">
-    <!-- Booking Form -->
-    <div class="card">
-      <h2>New Booking</h2>
-      <form id="bookingForm">
-        <label for="date">Booking Date:</label>
-        <input type="date" id="date" required>
+<div class="container">
+  <!-- Booking Form -->
+  <div class="card">
+    <h2>New Booking</h2>
+    <form id="bookingForm">
+      <label for="date">Booking Date:</label>
+      <input type="date" id="date" required>
 
-        <label for="persons">Number of Persons:</label>
-        <input type="number" id="persons" min="1" required>
+      <label for="persons">Number of Persons:</label>
+      <input type="number" id="persons" min="1" required>
 
-        <label for="place">Place:</label>
-        <input type="text" id="place" placeholder="Enter location" required>
+      <label for="place">Place:</label>
+      <input type="text" id="place" placeholder="Enter location" required>
 
-        <label for="orders">How Many Orders?</label>
-        <input type="number" id="orders" min="1" required>
+      <label for="orders">How Many Orders?</label>
+      <input type="number" id="orders" min="1" required>
 
-        <label for="menu">Select Menu:</label>
-        <select id="menu" required>
-          <option value="">-- Choose a dish --</option>
-          <option value="Pizza">🍕 Pizza</option>
-          <option value="Burger">🍔 Burger</option>
-          <option value="Pasta">🍝 Pasta</option>
-          <option value="Fried Chicken">🍗 Fried Chicken</option>
-          <option value="Salad">🥗 Salad</option>
-        </select>
+      <label for="menu">Select Menu:</label>
+      <select id="menu" required>
+        <option value="">-- Choose a dish --</option>
+        <option value="Pizza">🍕 Pizza</option>
+        <option value="Burger">🍔 Burger</option>
+        <option value="Pasta">🍝 Pasta</option>
+        <option value="Fried Chicken">🍗 Fried Chicken</option>
+        <option value="Salad">🥗 Salad</option>
+      </select>
 
-        <button type="submit">Add Booking</button>
-      </form>
+      <button type="submit">Add Booking</button>
+    </form>
 
-      <!-- Map -->
-      <div class="map">
-        <iframe
-          id="mapFrame"
-          src="https://www.google.com/maps?q=Cebu&output=embed"
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-
-    <!-- Dashboard Table -->
-    <div class="card">
-      <h2>Booking Records</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Persons</th>
-            <th>Place</th>
-            <th>Orders</th>
-            <th>Menu</th>
-          </tr>
-        </thead>
-        <tbody id="bookingList">
-          <tr><td colspan="5">No bookings yet</td></tr>
-        </tbody>
-      </table>
+    <!-- Map -->
+    <div class="map">
+      <iframe
+        id="mapFrame"
+        src="https://www.google.com/maps?q=Cebu&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 
-  <script>
-    const form = document.getElementById('bookingForm');
-    const bookingList = document.getElementById('bookingList');
-    const mapFrame = document.getElementById('mapFrame');
+  <!-- Dashboard Table -->
+  <div class="card">
+    <h2>Booking Records</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Persons</th>
+          <th>Place</th>
+          <th>Orders</th>
+          <th>Menu</th>
+        </tr>
+      </thead>
+      <tbody id="bookingList">
+        <tr><td colspan="5">No bookings yet</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+<script>
+  const form = document.getElementById('bookingForm');
+  const bookingList = document.getElementById('bookingList');
+  const mapFrame = document.getElementById('mapFrame');
 
-      const date = document.getElementById('date').value;
-      const persons = document.getElementById('persons').value;
-      const place = document.getElementById('place').value;
-      const orders = document.getElementById('orders').value;
-      const menu = document.getElementById('menu').value;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      // 1. Show booking in the table
-      if (bookingList.querySelector('td') && bookingList.rows.length === 1) {
-        bookingList.innerHTML = ''; // remove placeholder
-      }
+    const date = document.getElementById('date').value;
+    const persons = document.getElementById('persons').value;
+    const place = document.getElementById('place').value;
+    const orders = document.getElementById('orders').value;
+    const menu = document.getElementById('menu').value;
 
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${date}</td>
-        <td>${persons}</td>
-        <td>${place}</td>
-        <td>${orders}</td>
-        <td>${menu}</td>
-      `;
-      bookingList.appendChild(row);
+    // Show booking in the table
+    if (bookingList.querySelector('td') && bookingList.rows.length === 1) {
+      bookingList.innerHTML = ''; // remove placeholder
+    }
 
-      // 2. Update Map based on Place
-      mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(place)}&output=embed`;
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${date}</td>
+      <td>${persons}</td>
+      <td>${place}</td>
+      <td>${orders}</td>
+      <td>${menu}</td>
+    `;
+    bookingList.appendChild(row);
 
-      // 3. Send booking to Google Sheets (replace with your script URL)
-      const bookingData = { date, persons, place, orders, menu };
+    // Update map
+    mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(place)}&output=embed`;
 
-      fetch("https://script.google.com/macros/s/AKfycbyk2JUS5h6-DU90dvVdq38hcCTFdSXbChR3QMr_W2gQOv7JHNk_6CVtY3kmXlO3dOTGCA/exec", {
-        method: "POST",
-        body: JSON.stringify(bookingData),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => res.json())
-      .then(data => {
+    // Send booking to Google Sheets
+    const bookingData = { date, persons, place, orders, menu };
+
+    fetch("https://script.google.com/macros/s/PASTE_YOUR_SCRIPT_ID_HERE/exec", {
+      method: "POST",
+      body: JSON.stringify(bookingData),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.result === "success") {
         alert("✅ Booking received and saved to Google Sheets!");
-      })
-      .catch(err => console.error("❌ Error sending booking:", err));
-
-      // Reset form
-      form.reset();
+      } else {
+        alert("⚠️ Booking failed to save.");
+      }
+    })
+    .catch(err => {
+      console.error("❌ Error sending booking:", err);
+      alert("⚠️ Error: Could not connect to Google Sheets.");
     });
-  </script>
 
-  </body>
-  </html>
+    // Reset form
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
