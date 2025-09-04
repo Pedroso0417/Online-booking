@@ -1,72 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f7fa;
-      color: #333;
-    }
-    header {
-      background: #4CAF50;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-top: 0;
-      color: #4CAF50;
-    }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #4CAF50;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #45a049;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
-    }
-    th {
-      background: #4CAF50;
-      color: white;
-    }
-    .map {
-      margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 300px;
-    }
-  
+header {
+  background:green;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  flex: 1;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input, form select, form button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+form button {
+  margin-top: 15px;
+  background: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+form button:hover {
+  background: #218838;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}

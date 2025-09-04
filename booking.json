@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2025-09-04",
+    "persons": 2,
+    "place": "Cebu",
+    "orders": 2,
+    "menu": "Pasta"
+  },
+  {
+    "date": "2025-09-05",
+    "persons": 3,
+    "place": "Manila",
+    "orders": 1,
+    "menu": "Burger"
+  }
+]

@@ -1,6 +1,6 @@
 {
   "name": "online-booking",
-  "type":"module",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -21,7 +21,9 @@
   "homepage": "https://github.com/Pedroso0417/Online-booking#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
-    "googleapis": "^159.0.0"
+    "googleapis": "^159.0.0",
+    "mongoose": "^8.18.0"
   }
 }

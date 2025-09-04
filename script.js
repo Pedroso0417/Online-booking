@@ -1,57 +1,77 @@
+// script.js
 
-  const form = document.getElementById('bookingForm');
-  const bookingList = document.getElementById('bookingList');
-  const mapFrame = document.getElementById('mapFrame');
+const bookingForm = document.getElementById("bookingForm");
+const bookingList = document.getElementById("bookingList");
+const mapFrame = document.getElementById("mapFrame");
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+// 🔹 Load existing bookings from backend
+async function loadBookings() {
+  try {
+    const res = await fetch("http://localhost:3000/bookings");
+    const bookings = await res.json();
 
-    const date = document.getElementById('date').value;
-    const persons = document.getElementById('persons').value;
-    const place = document.getElementById('place').value;
-    const orders = document.getElementById('orders').value;
-    const menu = document.getElementById('menu').value;
-
-    // Show booking in the table
-    if (bookingList.querySelector('td') && bookingList.rows.length === 1) {
-      bookingList.innerHTML = ''; // remove placeholder
+    bookingList.innerHTML = "";
+    if (bookings.length === 0) {
+      bookingList.innerHTML = `<tr><td colspan="5">No bookings yet</td></tr>`;
+    } else {
+      bookings.forEach(b => {
+        const row = `
+          <tr>
+            <td>${b.date}</td>
+            <td>${b.persons}</td>
+            <td>${b.place}</td>
+            <td>${b.orders}</td>
+            <td>${b.menu}</td>
+          </tr>
+        `;
+        bookingList.insertAdjacentHTML("beforeend", row);
+      });
     }
+  } catch (err) {
+    console.error("❌ Error loading bookings:", err);
+  }
+}
 
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${date}</td>
-      <td>${persons}</td>
-      <td>${place}</td>
-      <td>${orders}</td>
-      <td>${menu}</td>
-    `;
-    bookingList.appendChild(row);
+// 🔹 Handle form submit
+async function handleBooking(e) {
+  e.preventDefault(); // stop page reload
 
-    // Update map
-    mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(place)}&output=embed`;
+  const data = {
+  date: document.getElementById("date").value,
+  persons: parseInt(document.getElementById("persons").value, 10), // number
+  place: document.getElementById("place").value,
+  orders: parseInt(document.getElementById("orders").value, 10),   // number
+  menu: document.getElementById("menu").value,
+};
 
-    // Send booking to Google Sheets
-    const bookingData = { date, persons, place, orders, menu };
 
-    fetch("https://script.google.com/macros/s/AKfycbz7okd7a-OG81qmIRhw9Mxz612lrrTAixx6e2o1HVmrKDZ-drL65n3S9S0EM0WIroMGHw/exec", {
-  method: "POST",
-  body: JSON.stringify(bookingData),
-  headers: { "Content-Type": "application/json" }
-})
-
-    .then(res => res.json())
-    .then(data => {
-      if (data.result === "success") {
-        alert("✅ Booking received and saved to Google Sheets!");
-      } else {
-        alert("⚠️ Booking failed to save.");
-      }
-    })
-    .catch(err => {
-      console.error("❌ Error sending booking:", err);
-      alert("⚠️ Error: Could not connect to Google Sheets.");
+  try {
+    const res = await fetch("http://localhost:3000/bookings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
 
-    // Reset form
-    form.reset();
-  });
+    if (!res.ok) throw new Error("Failed to save booking");
+    const result = await res.json();
+    console.log("✅ Booking saved:", result);
+
+    // Update map
+    mapFrame.src = `https://www.google.com/maps?q=${encodeURIComponent(data.place)}&output=embed`;
+
+    // Reset form + refresh table
+    bookingForm.reset();
+    loadBookings();
+
+    alert("✅ Booking received and saved to database!");
+  } catch (err) {
+    console.error("❌ Error saving booking:", err);
+    alert("⚠️ Error: Could not save booking.");
+  }
+}
+
+// 🔹 Event listener
+bookingForm.addEventListener("submit", handleBooking);
+
+// 🔹 Load records on startup
+window.onload = loadBookings;
