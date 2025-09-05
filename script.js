@@ -53,11 +53,12 @@ async function handleBooking(e) {
   };
 
   try {
-    const res = await fetch(`${API_BASE}/bookings`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    const res = await fetch("https://mybookingapp.onrender.com/bookings", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
+});
+
 
     if (!res.ok) throw new Error("Failed to save booking");
     const result = await res.json();
