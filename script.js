@@ -49,7 +49,7 @@ async function handleBooking(e) {
   };
 
   try {
-    const res = await fetch("http://localhost:3000/bookings", {
+    const res = await fetch("http://192.168.0.82:3000/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
