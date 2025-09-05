@@ -12,5 +12,15 @@
     "place": "Manila",
     "orders": 1,
     "menu": "Burger"
-  }
+  },
+  {
+  "name": "Juan Dela Cruz",
+  "phone": "09123456789",
+  "date": "2025-09-06",
+  "persons": 2,
+  "place": "Cebu",
+  "orders": 3,
+  "menu": "Pasta"
+}
+
 ]

@@ -16,6 +16,12 @@
   <div class="card">
     <h2>New Booking</h2>
     <form id="bookingForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="phone">Cellphone Number:</label>
+      <input type="tel" id="phone" placeholder="09XXXXXXXXX" pattern="[0-9]{11}" required>
+
       <label for="date">Booking Date:</label>
       <input type="date" id="date" required>
 
@@ -61,6 +67,8 @@
     <table>
       <thead>
         <tr>
+          <th>Name</th>
+          <th>Cellphone</th>
           <th>Date</th>
           <th>Persons</th>
           <th>Place</th>
@@ -69,7 +77,7 @@
         </tr>
       </thead>
       <tbody id="bookingList">
-        <tr><td colspan="5">No bookings yet</td></tr>
+        <tr><td colspan="7">No bookings yet</td></tr>
       </tbody>
     </table>
   </div>

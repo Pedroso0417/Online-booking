@@ -12,11 +12,13 @@ async function loadBookings() {
 
     bookingList.innerHTML = "";
     if (bookings.length === 0) {
-      bookingList.innerHTML = `<tr><td colspan="5">No bookings yet</td></tr>`;
+      bookingList.innerHTML = `<tr><td colspan="7">No bookings yet</td></tr>`;
     } else {
       bookings.forEach(b => {
         const row = `
           <tr>
+            <td>${b.name || "-"}</td>
+            <td>${b.phone || "-"}</td>
             <td>${b.date}</td>
             <td>${b.persons}</td>
             <td>${b.place}</td>
@@ -37,13 +39,14 @@ async function handleBooking(e) {
   e.preventDefault(); // stop page reload
 
   const data = {
-  date: document.getElementById("date").value,
-  persons: parseInt(document.getElementById("persons").value, 10), // number
-  place: document.getElementById("place").value,
-  orders: parseInt(document.getElementById("orders").value, 10),   // number
-  menu: document.getElementById("menu").value,
-};
-
+    name: document.getElementById("name").value,      // 👈 new
+    phone: document.getElementById("phone").value,    // 👈 new
+    date: document.getElementById("date").value,
+    persons: parseInt(document.getElementById("persons").value, 10),
+    place: document.getElementById("place").value,
+    orders: parseInt(document.getElementById("orders").value, 10),
+    menu: document.getElementById("menu").value,
+  };
 
   try {
     const res = await fetch("http://localhost:3000/bookings", {
