@@ -4,10 +4,13 @@ const bookingForm = document.getElementById("bookingForm");
 const bookingList = document.getElementById("bookingList");
 const mapFrame = document.getElementById("mapFrame");
 
+// 👇 Change this to your PC's IP address
+const API_BASE = "http://192.168.0.82:3000";
+
 // 🔹 Load existing bookings from backend
 async function loadBookings() {
   try {
-    const res = await fetch("http://localhost:3000/bookings");
+    const res = await fetch(`${API_BASE}/bookings`);
     const bookings = await res.json();
 
     bookingList.innerHTML = "";
@@ -31,6 +34,7 @@ async function loadBookings() {
     }
   } catch (err) {
     console.error("❌ Error loading bookings:", err);
+    alert("⚠️ Could not load bookings. Check connection.");
   }
 }
 
@@ -39,8 +43,8 @@ async function handleBooking(e) {
   e.preventDefault(); // stop page reload
 
   const data = {
-    name: document.getElementById("name").value,      // 👈 new
-    phone: document.getElementById("phone").value,    // 👈 new
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
     date: document.getElementById("date").value,
     persons: parseInt(document.getElementById("persons").value, 10),
     place: document.getElementById("place").value,
@@ -49,7 +53,7 @@ async function handleBooking(e) {
   };
 
   try {
-    const res = await fetch("http://192.168.0.82:3000/bookings", {
+    const res = await fetch(`${API_BASE}/bookings`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
